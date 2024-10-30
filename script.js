@@ -85,6 +85,24 @@ function createSparkle(x, y) {
     });
 }
 
+// Function to trigger jumpscare
+function triggerJumpscare() {
+    const jumpscare = document.getElementById('jumpscare');
+    jumpscare.style.display = 'block';
+    
+    // Hide the jumpscare after 1.5 seconds
+    setTimeout(() => {
+        jumpscare.style.display = 'none';
+    }, 1500);
+}
+
+// Randomly trigger jumpscare
+setInterval(() => {
+    if (Math.random() < 0.1) { // 10% chance every 5 seconds
+        triggerJumpscare();
+    }
+}, 5000);
+
 // Function to check answers and display result
 function submitQuiz() {
     let score = 0;
