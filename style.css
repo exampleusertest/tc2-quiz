@@ -2,6 +2,8 @@ body {
     font-family: Arial, sans-serif;
     max-width: 800px;
     margin: auto;
+    position: relative; /* Allow positioning of sparkles */
+    overflow: hidden; /* Hide sparkles outside the view */
 }
 
 h1 {
@@ -34,4 +36,26 @@ button {
     font-size: 1.2em;
     font-weight: bold;
     margin-top: 20px;
+}
+
+/* Sparkle Effect Styles */
+.sparkle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: gold;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: sparkle-animation 1s forwards;
+}
+
+@keyframes sparkle-animation {
+    0% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(100px, -100px);
+        opacity: 0;
+    }
 }
