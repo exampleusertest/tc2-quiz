@@ -71,6 +71,20 @@ questions.forEach((q, index) => {
     quizContainer.appendChild(questionElement);
 });
 
+// Function to create sparkles
+function createSparkle(x, y) {
+    const sparkle = document.createElement('div');
+    sparkle.classList.add('sparkle');
+    sparkle.style.left = `${x}px`;
+    sparkle.style.top = `${y}px`;
+    document.body.appendChild(sparkle);
+    
+    // Remove sparkle after animation
+    sparkle.addEventListener('animationend', () => {
+        sparkle.remove();
+    });
+}
+
 // Function to check answers and display result
 function submitQuiz() {
     let score = 0;
@@ -84,4 +98,13 @@ function submitQuiz() {
     
     const result = document.getElementById('result');
     result.textContent = `Your score: ${score} out of 50`;
+
+    // Create sparkles if score is more than 30
+    if (score > 30) {
+        for (let i = 0; i < 30; i++) {
+            const x = Math.random() * window.innerWidth;
+            const y = Math.random() * window.innerHeight;
+            createSparkle(x, y);
+        }
+    }
 }
